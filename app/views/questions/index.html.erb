@@ -1,0 +1,9 @@
+<h1>Question#index</h1>
+
+<ol>
+<% @questions.each do |question| %>
+  <li> <%= question.title %> </li>
+  <%= link_to 'Show', question_path(question) %>
+  <%= link_to 'Edit', edit_question_path(question) %>
+<% end %>
+</ol>
