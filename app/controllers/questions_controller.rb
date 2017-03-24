@@ -1,7 +1,10 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, except: [:index]
+  before_action :set_question, only: [:show, :edit, :update, :destroy]
   def index
     @questions = Question.order("created_at DESC").all
+  end
+  def new
+    @question = Question.new
   end
   def create
     @question = Question.new(question_params)
@@ -19,8 +22,8 @@ class QuestionsController < ApplicationController
     end
   end
   def destroy
-    @horse.destroy
-    redirect_to horses_url, notice: 'Horse was successfully destroyed.'
+    @question.destroy
+    redirect_to questions_path, notice: 'question was successfully destroyed.'
   end
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -30,6 +33,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def question_params
-      params.require(:question).permit(:title)
+      params.require(:question).permit(:title, :description)
     end
 end
