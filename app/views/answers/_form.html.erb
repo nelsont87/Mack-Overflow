@@ -1,9 +1,14 @@
 <%= form_for(@answer) do |f| %>
+
   <div class="field">
     <%= f.label "Answer" %><br>
     <%= f.text_field :description %>
   </div>
+  <div class="field">
+    <%= f.hidden_field :question_id, value: @answer.question_id %>
+  </div>
   <div class= "actions">
     <%= f.submit "Submit Answer" %>
   </div>
+
 <% end %>

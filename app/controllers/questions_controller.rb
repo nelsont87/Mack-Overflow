@@ -3,9 +3,18 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.order("created_at DESC").all
   end
+
+  def show
+    @answer = @question.answers.build
+  end
+
   def new
     @question = Question.new
   end
+
+  def edit
+  end
+
   def create
     @question = Question.new(question_params)
     if @question.save
